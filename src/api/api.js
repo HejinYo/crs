@@ -5,7 +5,8 @@ import {
 let env = "-test" //-dev 或者 -test
 const apiMall = 'https://sujiefs.com/'
 //const apiMall = 'https://api.tangxinmao.com'
-const appletsApi = 'https://applets.hejinyo.cn/app/'
+//const appletsApi = 'https://applets.hejinyo.cn/app/'
+const appletsApi = 'https://hejinyo.cn/app/'
 
 /**
  * 获取发现好商品接口

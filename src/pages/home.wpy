@@ -1,0 +1,112 @@
+<template xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="userinfo">
+    <image class="userinfo-avatar" src="{{ userInfo.avatarUrl }}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </view>
+  <view class="page">
+      <view class="page__hd">
+          <view class="page__title">Dialog</view>
+          <view class="page__desc">对话框，采用小程序原生的modal</view>
+      </view>
+      <view class="page__bd">
+          <view class="weui-btn-area">
+              <button class="weui-btn" type="default" bindtap="openConfirm">Confirm Dialog</button>
+              <button class="weui-btn" type="default" bindtap="openAlert">Alert Dialog</button>
+          </view>
+      </view>
+  </view>
+</template>
+<script>
+  import wepy from 'wepy';
+
+  export default class Home extends wepy.page {
+    config = {
+      usingComponents: {
+        'wxc-flex': '../../packages/@minui/wxc-flex/dist/index',
+        'wxc-cc': '../../packages/@minui/wxc-cc/dist/index',
+        'wxc-toast': '../../packages/@minui/wxc-toast/dist/index',
+        'wxc-avatar': '../../packages/@minui/wxc-avatar/dist/index',
+        'wxc-loadmore': '../../packages/@minui/wxc-loadmore/dist/index',
+        'wxc-abnor': '../../packages/@minui/wxc-abnor/dist/index'
+      }
+    }
+    components = {}
+    computed = {}
+    data = {
+      userInfo: {}
+    }
+    methods = {
+      openConfirm: function () {
+        wepy.showModal({
+          title: '弹窗标题',
+          content: '弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内',
+          confirmText: "主操作",
+          cancelText: "辅助操作",
+          success: function (res) {
+            console.log(res);
+            if (res.confirm) {
+              console.log('用户点击主操作')
+            } else {
+              console.log('用户点击辅助操作')
+            }
+          }
+        });
+      },
+      openAlert: function () {
+        wepy.showModal({
+          content: '弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内',
+          showCancel: false,
+          success: function (res) {
+            if (res.confirm) {
+              console.log('用户点击确定')
+            }
+          }
+        });
+      }
+    }
+
+    events = {}
+
+    onShow() {
+      this.$parent.getUserInfo().then((data) => {
+        this.userInfo = data
+        this.$apply()
+      })
+    }
+
+    // Other properties
+  }
+</script>
+<style>
+
+  .userinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .userinfo-avatar {
+    width: 128rpx;
+    height: 128rpx;
+    margin: 20rpx;
+    border-radius: 50%;
+  }
+
+  .userinfo-nickname {
+    color: #aaa;
+  }
+
+  page{
+      background-color: #F8F8F8;
+      font-size: 16px;
+      font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+  }
+  .page__hd {
+      padding: 40px;
+  }
+  .page__bd {
+      padding-bottom: 40px;
+  }
+
+
+</style>

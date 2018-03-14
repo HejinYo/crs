@@ -1,4 +1,9 @@
 <style lang="less">
+  @import "assets/style/weui.wxss";
+  @import "assets/style/base";
+  @import "assets/style/icon";
+  @import "assets/style/style";
+
   .container {
     height: 100%;
     display: flex;
@@ -36,9 +41,11 @@
   export default class extends wepy.app {
     config = {
       pages: [
-        'pages/index',
+        'pages/home',
         'pages/demo',
         'pages/minui',
+        'pages/myinfo',
+        'pages/shopcart'
       ],
       window: {
         backgroundTextStyle: 'light',
@@ -54,25 +61,25 @@
         backgroundColor: '#ffffff',
         borderStyle: 'black',
         list: [{
-          pagePath: 'pages/index',
+          pagePath: 'pages/home',
           text: '首页',
-          iconPath: 'images/icon_home.png',
-          selectedIconPath: 'images/icon_home_active.png'
+          iconPath: 'assets/images/icon_home.png',
+          selectedIconPath: 'assets/images/icon_home_active.png'
         }, {
           pagePath: 'pages/demo',
           text: '分类',
-          iconPath: 'images/icon_classify.png',
-          selectedIconPath: 'images/icon_classify_active.png'
+          iconPath: 'assets/images/icon_classify.png',
+          selectedIconPath: 'assets/images/icon_classify_active.png'
         }, {
-          pagePath: 'pages/minui',
+          pagePath: 'pages/shopcart',
           text: '购物车',
-          iconPath: 'images/icon_shop_cart.png',
-          selectedIconPath: 'images/icon_shop_cart_active.png'
+          iconPath: 'assets/images/icon_shop_cart.png',
+          selectedIconPath: 'assets/images/icon_shop_cart_active.png'
         }, {
-          pagePath: 'pages/demo',
+          pagePath: 'pages/myinfo',
           text: '我',
-          iconPath: 'images/icon_info.png',
-          selectedIconPath: 'images/icon_info_active.png'
+          iconPath: 'assets/images/icon_info.png',
+          selectedIconPath: 'assets/images/icon_info_active.png'
         }]
       }
     }
