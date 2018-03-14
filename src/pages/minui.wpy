@@ -1,0 +1,53 @@
+<!-- index.wpy -->
+<style lang="less">
+</style>
+<template>
+  <view class="container">
+    <wxc-toast
+      class="J_toast"
+      text="Hello World"></wxc-toast>
+    <button bindtap="showToast">调用 show() 方法显示</button>
+  </view>
+  <wxc-avatar class="avatar" count="7" src="https://s11.mogucdn.com/p2/170413/upload_86dkh4e886991g9lji7a6g5c530ji_400x400.jpg"></wxc-avatar>
+  <wxc-loadmore is-end="{{true}}"></wxc-loadmore>
+  <wxc-abnor type="CART"></wxc-abnor>
+  <view class="index-bd">
+    这部分是刚刚新增的
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import testMixin from '../mixins/test'
+
+  export default class Minui extends wepy.page {
+    config = {
+      navigationBarTitleText: 'test',
+      usingComponents: {
+        'wxc-toast': '../../packages/@minui/wxc-toast/dist/index',
+        'wxc-avatar': '../../packages/@minui/wxc-avatar/dist/index',
+        'wxc-loadmore': '../../packages/@minui/wxc-loadmore/dist/index',
+        'wxc-abnor': '../../packages/@minui/wxc-abnor/dist/index'
+      }
+    }
+    components = {}
+
+    mixins = [testMixin]
+
+    data = {}
+
+    computed = {}
+
+    methods = {
+      showToast() {
+        let $toast = this.$wxpage.selectComponent('.J_toast')
+        $toast && $toast.show()
+      }
+    }
+
+    events = {}
+
+    onLoad() {
+    }
+  }
+</script>

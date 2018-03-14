@@ -1,0 +1,117 @@
+<template xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="userinfo">
+    <wxc-avatar class="userinfo-avatar" count="99" src="{{userInfo.avatarUrl}}"></wxc-avatar>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </view>
+  <wxc-flex main="center" cross="center">
+    <view>1</view>
+    <view>1</view>
+  </wxc-flex>
+  <wxc-cc class="demo">
+    <image class="demo__pic" src="https://s10.mogucdn.com/mlcdn/c45406/171115_7eaee6469k5l0e1728j7aige52e81_352x352.png" mode="aspectFit"></image>
+    <image class="demo__pic" src="https://s10.mogucdn.com/mlcdn/c45406/171109_871803cbeajedk3fabb59jl4idl1c_356x356.png" mode="aspectFit"></image>
+  </wxc-cc>
+</template>
+<script>
+  import wepy from 'wepy';
+
+  export default class Index extends wepy.page {
+    config = {
+      usingComponents: {
+        'wxc-flex': '../../packages/@minui/wxc-flex/dist/index',
+        'wxc-cc': '../../packages/@minui/wxc-cc/dist/index',
+        'wxc-toast': '../../packages/@minui/wxc-toast/dist/index',
+        'wxc-avatar': '../../packages/@minui/wxc-avatar/dist/index',
+        'wxc-loadmore': '../../packages/@minui/wxc-loadmore/dist/index',
+        'wxc-abnor': '../../packages/@minui/wxc-abnor/dist/index'
+      }
+    }
+    components = {}
+    computed = {}
+    data = {
+      userInfo: {}
+    }
+    methods = {}
+
+    events = {}
+
+    onShow() {
+      this.$parent.getUserInfo().then((data) => {
+        this.userInfo = data
+        this.$apply()
+      })
+    }
+
+    // Other properties
+  }
+</script>
+<style>
+  .avatar {
+    display: block;
+    width: 120rpx;
+    height: 120rpx;
+  }
+
+  .userinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .userinfo-avatar {
+    width: 128rpx;
+    height: 128rpx;
+    margin: 20rpx;
+    border-radius: 50%;
+  }
+
+  .userinfo-nickname {
+    color: #aaa;
+  }
+
+  .usermotto {
+    margin-top: 200px;
+  }
+
+  .wrap {
+    display: block;
+    height: 300rpx;
+    padding: 10rpx;
+    background: #696969;
+  }
+  .item {
+    min-width: 100rpx;
+    min-height: 100rpx;
+  }
+  .item:nth-of-type(odd) {
+    background: #afdde3
+  }
+  .item:nth-of-type(2n) {
+    background: #f397b2
+  }
+  .layout-code {
+    padding: 15rpx;
+    background: #222222;
+    color: #FFFFFF;
+    font-size: 20rpx;
+    font-family: Monaco;
+  }
+  .layout-code__point {
+    display: inline-block;
+    padding: 0 5rpx;
+    background: #444444;
+  }
+
+
+  .demo {
+    display: block;
+    width: 100%;
+    height: 400rpx;
+    background: #f2f2f2;
+  }
+  .demo__pic {
+    width: 200rpx;
+    height: 200rpx;
+    margin: 15rpx;
+  }
+</style>
