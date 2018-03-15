@@ -84,11 +84,12 @@
           openId: openId
         }
       });
-      if (json.data.code == 0) {
-        let data = json.data;
+      console.log(json)
+      if (json.data.code === 0) {
+        let data = json.data.result;
         this.list = data.list;
         this.totalPrice = data.totalPrice;
-        for (var i = 0; i < this.list.length; i++) {
+        for (let i = 0; i < this.list.length; i++) {
           if (!this.list[i].ischecked) {
             this.allChecked = false;
             break;

@@ -31,7 +31,7 @@ const goodsDetail = (params) => wxRequest(params, apiMall + '/api/mall/goods');
 //商品加入购物车
 const addCart = (params) => wxRequest(params, apiMall + '/api/mall/goodsCart/add');
 //用户的购物车商品列表
-const cartList = (params) => wxRequest(params, apiMall + '/api/mall/goodsCart/list');
+const cartList = (params) => wxRequest(params, appletsApi + '/goodsCart/list');
 //购物车的商品选中状态
 const cartCheck = (params) => wxRequest(params, apiMall + '/api/mall/goodsCart/check');
 //购物车的商品选中状态(全选)
