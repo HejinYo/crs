@@ -311,6 +311,10 @@
 </script>
 
 <style lang="less">
+
+  .goodsList{
+    margin-bottom: 110rpx;
+  }
   .goods-info {
     border-bottom: 1px solid #eee;
     display: flex;
